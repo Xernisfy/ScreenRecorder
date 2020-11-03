@@ -3,16 +3,14 @@ document.body.innerHTML = `<label class="text" for="record">Record</label>
   <input id="record" type="checkbox" />
   <span class="slider"></span>
 </label>`;
+const streamConstraints = { video: true, audio: true };
 const chunks = [];
 let stream;
 let recorder;
-const cursor = document.getElementById("cursor") || { checked: true };
 const record = document.getElementById("record");
 record.addEventListener("input", () => {
   if (record.checked) {
-    navigator.mediaDevices.getDisplayMedia(
-      { video: { cursor: ["never", "always"][+cursor.checked] }, audio: true },
-    ).then((screen) => {
+    navigator.mediaDevices.getDisplayMedia(streamConstraints).then((screen) => {
       stream = screen;
       recorder = new MediaRecorder(stream, { mimeType: "video/webm" });
       recorder.ondataavailable = function (e) {
