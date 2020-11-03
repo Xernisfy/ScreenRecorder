@@ -1,0 +1,55 @@
+:root {
+  --h: 24px;
+  --w: 48px;
+  --r: calc(var(--h) / 9);
+}
+
+* {
+  user-select: none;
+}
+
+.text,
+.switch {
+  vertical-align: middle;
+}
+
+.switch {
+  display: inline-block;
+  height: var(--h);
+  position: relative;
+  width: var(--w);
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  background-color: #e6e6e6;
+  border-radius: var(--h);
+  cursor: pointer;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transition: 0.4s;
+  width: 100%;
+}
+
+.slider:before {
+  background-color: white;
+  border-radius: 50%;
+  content: "";
+  margin: var(--r);
+  padding: calc(var(--r) * 3.5);
+  position: absolute;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: red;
+}
+
+input:checked + .slider:before {
+  transform: translateX(calc(var(--w) - var(--h)));
+}
