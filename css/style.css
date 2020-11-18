@@ -1,7 +1,8 @@
 :root {
   --h: 24px;
   --w: 48px;
-  --r: calc(var(--h) / 9);
+  --p: 8;
+  --r: calc(var(--h) / var(--p));
 }
 
 * {
@@ -41,7 +42,7 @@
   border-radius: 50%;
   content: "";
   margin: var(--r);
-  padding: calc(var(--r) * 3.5);
+  padding: calc(var(--r) * (var(--p) / 2 - 1));
   position: absolute;
   transition: 0.4s;
 }
